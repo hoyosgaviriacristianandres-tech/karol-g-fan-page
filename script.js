@@ -1,7 +1,4 @@
 const botonArriba = document.querySelector("#volver-arriba");
-const formulario = document.querySelector("#formulario-fan");
-const nombreFan = document.querySelector("#nombre-fan");
-const respuestaFan = document.querySelector("#respuesta-fan");
 const anio = document.querySelector("#anio");
 
 function mostrarCancion(nombre) {
@@ -32,15 +29,6 @@ window.addEventListener("scroll", function () {
   } else {
     botonArriba.classList.remove("mostrar");
   }
-});
-
-formulario.addEventListener("submit", function (evento) {
-  evento.preventDefault();
-
-  respuestaFan.textContent =
-    "¡Gracias por tu mensaje, " + nombreFan.value + "! ✨";
-
-  nombreFan.value = "";
 });
 
 anio.textContent = new Date().getFullYear();
