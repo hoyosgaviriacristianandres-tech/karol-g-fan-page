@@ -150,13 +150,22 @@ Más que una artista de grandes éxitos, Karol G se ha convertido en un símbolo
      <section class="mensaje-fan">
   <h2>Deja tu mensaje</h2>
 
-  <form id="formulario-fan">
+  <form
+  id="formulario-fan"
+  action="https://formspree.io/f/xaewqvqj"
+  method="POST"
+>
     <input
       id="nombre-fan"
+        name="nombre"
       type="text"
       placeholder="Escribe tu nombre"
       required
-    >
+    ><textarea
+  name="mensaje"
+  placeholder="Escribe tu mensaje"
+  required
+></textarea>
 
     <button type="submit">Enviar mensaje</button>
   </form>
