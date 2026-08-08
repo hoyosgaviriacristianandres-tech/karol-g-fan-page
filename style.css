@@ -1,0 +1,465 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #080808;
+    color: white;
+}
+
+
+/* =========================
+   MENÚ
+========================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 7%;
+
+    z-index: 1000;
+
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ff4fa3;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ff4fa3;
+}
+
+
+/* =========================
+   PORTADA
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 120px 8%;
+
+    background:
+        radial-gradient(
+            circle at 70% 50%,
+            #ff4fa344,
+            transparent 35%
+        ),
+        linear-gradient(
+            120deg,
+            #050505,
+            #181018
+        );
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.small-title {
+    color: #ff4fa3;
+    letter-spacing: 6px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(60px, 10vw, 140px);
+    line-height: 0.9;
+    margin-bottom: 20px;
+    white-space: nowrap;
+}
+
+
+.hero h2 {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #cccccc;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.btn {
+    display: inline-block;
+
+    padding: 15px 25px;
+
+    border-radius: 30px;
+
+    background: #ff4fa3;
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px #ff4fa355;
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 1px solid #ffffff55;
+}
+
+
+/* =========================
+   SECCIONES
+========================= */
+
+.section {
+    padding: 120px 8%;
+}
+
+.section-label {
+    color: #ff4fa3;
+    letter-spacing: 5px;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.section h2 {
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+
+
+/* =========================
+   CANCIONES
+========================= */
+
+.songs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.song {
+    padding: 30px;
+
+    border: 1px solid #ffffff15;
+    border-radius: 15px;
+
+    background: #ffffff08;
+
+    transition: 0.3s;
+}
+
+.song:hover {
+    transform: translateY(-5px);
+    border-color: #ff4fa3;
+}
+
+.song span {
+    color: #ff4fa3;
+}
+
+.song h3 {
+  margin-top: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.song h3:hover {
+  color: #ff4fa3;
+}
+
+
+/* =========================
+   HISTORIA
+========================= */
+
+.historia {
+    background: #111111;
+}
+
+.historia > p:last-child {
+    max-width: 700px;
+
+    color: #bbbbbb;
+
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   GALERÍA
+========================= */
+
+.gallery {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.gallery div {
+    height: 250px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 60px;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        135deg,
+        #ff4fa344,
+        #ffffff08
+    );
+
+    border: 1px solid #ffffff15;
+
+    transition: 0.3s;
+}
+
+.gallery div:hover {
+    transform: scale(1.03);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 40px 8%;
+
+    border-top: 1px solid #ffffff15;
+
+    color: #888888;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        padding: 120px 25px 80px;
+    }
+
+    .hero h1 {
+        font-size: 70px;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .section {
+        padding: 80px 25px;
+    }
+
+    .section h2 {
+        font-size: 38px;
+    }
+
+    .songs {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+}#inicio img {
+  width: 250px;
+  max-width: 90%;
+  border-radius: 40px;
+  margin-bottom: 40px;
+}#galeria {
+  background-color: #f8d6e6;
+  padding: 50px 12%;
+  text-align: center;
+}
+
+.galeria-fotos img {
+  width: 300px;
+  max-width: 100%;
+  border-radius: 15px;
+}html {
+  scroll-behavior: smooth;
+}@media (max-width: 600px) {
+  header h1 {
+    font-size: 30px;
+  }
+
+  nav a {
+    display: block;
+    margin: 12px;
+  }
+
+  section {
+    padding: 35px 8%;
+  }
+
+  #inicio h2 {
+    font-size: 34px;
+  }
+
+  #inicio img {
+    width: 200px;
+  }
+}.song li {
+  list-style: none;
+  cursor: pointer;
+}
+
+.song li:hover {
+  color: #ff4fa3;
+}
+
+#cancion-elegida {
+  margin-top: 25px;
+  color: #ff4fa3;
+  font-size: 20px;
+  font-weight: bold;
+}#volver-arriba {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: #ff4fa3;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}.mensaje-fan {
+  padding: 80px 8%;
+  text-align: center;
+  background-color: #171017;
+}
+
+.mensaje-fan input {
+  padding: 13px;
+  border-radius: 8px;
+  border: none;
+  margin: 10px;
+}
+
+.mensaje-fan button {
+  background-color: #ff4fa3;
+  color: white;
+  border: none;
+  padding: 13px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#respuesta-fan {
+  margin-top: 18px;
+  color: #ff4fa3;
+  font-weight: bold;
+}.hero-content {
+  animation: aparecer 1.2s ease-out;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}#volver-arriba {
+  display: none;
+}
+
+#volver-arriba.mostrar {
+  display: block;
+}.reproductor {
+  max-width: 700px;
+  margin: 0 auto 35px;
+}
+
+.reproductor iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 15px;
+}
