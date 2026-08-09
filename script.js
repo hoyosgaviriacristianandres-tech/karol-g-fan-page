@@ -117,3 +117,126 @@ elements.forEach(element => {
     observer.observe(element);
 
 });
+// =========================
+// REPRODUCTOR MUSICAL
+// =========================
+
+const songs = [
+    "Tusa",
+    "Provenza",
+    "Mientras Me Curo del Cora",
+    "QLONA"
+];
+
+let currentSong = 0;
+let isPlaying = false;
+
+const songTitle = document.getElementById("song-title");
+const playButton = document.getElementById("play-song");
+const prevButton = document.getElementById("prev-song");
+const nextButton = document.getElementById("next-song");
+const progress = document.getElementById("progress");
+
+
+// Cambiar canción
+
+function updateSong() {
+
+    songTitle.textContent = songs[currentSong];
+
+    progress.style.width = "0%";
+
+}
+
+
+// Reproducir / pausar
+
+playButton.addEventListener("click", () => {
+
+    isPlaying = !isPlaying;
+
+    if (isPlaying) {
+
+        playButton.textContent = "❚❚";
+
+        startProgress();
+
+    } else {
+
+        playButton.textContent = "▶";
+
+    }
+
+});
+
+
+// Canción anterior
+
+prevButton.addEventListener("click", () => {
+
+    currentSong--;
+
+    if (currentSong < 0) {
+        currentSong = songs.length - 1;
+    }
+
+    updateSong();
+
+});
+
+
+// Canción siguiente
+
+nextButton.addEventListener("click", () => {
+
+    currentSong++;
+
+    if (currentSong >= songs.length) {
+        currentSong = 0;
+    }
+
+    updateSong();
+
+});
+
+
+// Barra de progreso visual
+
+function startProgress() {
+
+    let width = 0;
+
+    const timer = setInterval(() => {
+
+        if (!isPlaying) {
+
+            clearInterval(timer);
+
+            return;
+
+        }
+
+        width += 0.5;
+
+        progress.style.width = width + "%";
+
+
+        if (width >= 100) {
+
+            clearInterval(timer);
+
+            currentSong++;
+
+            if (currentSong >= songs.length) {
+                currentSong = 0;
+            }
+
+            updateSong();
+
+            startProgress();
+
+        }
+
+    }, 100);
+
+}
