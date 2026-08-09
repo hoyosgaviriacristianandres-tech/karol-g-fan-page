@@ -5,192 +5,583 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Karol G | Mañana Será Bonito</title>
+    <meta
+        name="description"
+        content="Fan page dedicada a Karol G, su música, trayectoria y momentos destacados."
+    >
+
+    <title>Karol G | Fan Page</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- MENÚ -->
+    <!-- =========================
+         BARRA DE NAVEGACIÓN
+    ========================== -->
+
     <header class="navbar">
 
-        <div class="logo">
+        <a href="#inicio" class="logo">
             KAROL <span>G</span>
-        </div>
+        </a>
 
-        <nav>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+            ☰
+        </button>
+
+        <nav id="nav-menu">
+
             <a href="#inicio">Inicio</a>
             <a href="#musica">Música</a>
             <a href="#historia">Historia</a>
             <a href="#galeria">Galería</a>
+            <a href="#contacto">Mensaje</a>
+
         </nav>
 
     </header>
 
 
-    <!-- PORTADA -->
-    <main id="inicio" class="hero">
-        <div class="hero-image">
-    <img src="karolg.jpg" alt="Karol G">
-        </div>
+    <!-- =========================
+         PORTADA
+    ========================== -->
 
-            <p class="small-title">
+    <main id="inicio" class="hero">
+
+        <div class="hero-background"></div>
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
                 LA BICHOTA
             </p>
 
             <h1>
-                KAROL G
+                KAROL <span>G</span>
             </h1>
 
             <h2>
                 Mañana será bonito.
             </h2>
 
-            <p>
+            <p class="hero-description">
                 Una historia de música, sueños, evolución
                 y momentos que dejaron huella.
             </p>
 
-            <div class="buttons">
+            <div class="hero-buttons">
 
-                <a href="#musica" class="btn">
+                <a href="#musica" class="btn btn-primary">
                     Explorar música
                 </a>
 
-                <a href="#historia" class="btn secondary">
+                <a href="#historia" class="btn btn-secondary">
                     Conocer su historia
                 </a>
 
             </div>
-            </div>
+
+        </div>
+
+
+        <div class="hero-photo">
+
+            <div class="photo-glow"></div>
+
+            <img
+                src="karolg.jpg"
+                alt="Karol G"
+            >
+
+        </div>
+
+
+        <div class="scroll-indicator">
+            ↓ Desliza
+        </div>
+
     </main>
 
 
-    <!-- MÚSICA -->
-    <section id="musica" class="section">
+    <!-- =========================
+         PRESENTACIÓN
+    ========================== -->
 
-        <p class="section-label">MÚSICA</p>
+    <section class="intro">
 
-        <h2>Algunos éxitos</h2>
+        <div class="intro-number">
+            01
+        </div>
 
-        <div class="songs">
+        <div>
 
-            <div class="song">
-                <span>01</span>
-                <h3 onclick="window.open('https://www.youtube.com/watch?v=ca48oMV59LU', '_blank')">
-  Provenza
-</h3>
-            </div>
+            <p class="section-label">
+                UNA ARTISTA
+            </p>
 
-            <div class="song">
-                <span>02</span>
-                <h3 onclick="window.open('https://www.youtube.com/watch?v=tbneQDc2H3I', '_blank')">
-  Tusa
-</h3>
+            <h2>
+                Música que conecta
+                <span>generaciones.</span>
+            </h2>
 
-            </div>
+            <p>
+                Karol G ha construido una identidad artística
+                reconocible a través de diferentes etapas,
+                sonidos y experiencias.
+            </p>
 
-            <div class="song">
-                <span>03</span>
-                <h3 onclick="window.open('https://www.youtube.com/watch?v=37wmW9kYAlQ', '_blank')">
-  Mientras Me Curo del Cora
-</h3>
-            </div>
-
-            <div class="song">
-                <span>04</span>
-              <h3 onclick="window.open('https://www.youtube.com/watch?v=SSfFmHwWpjE', '_blank')">
-  Milagros
-</h3>
-            </div>
-
-            </div class="songs">
-        <span>05</span>
-        <h3 onclick="window.open('https://www.youtube.com/watch?v=Ivn2f7AEaLw?si', '-blank')">
-alguien que te amaba
- </h3>
-        
-<p id="cancion-elegida"></p>
         </div>
 
     </section>
 
 
-    <!-- HISTORIA -->
-    <section id="historia" class="section historia">
+    <!-- =========================
+         MÚSICA
+    ========================== -->
 
-        <p class="section-label">TRAYECTORIA</p>
+    <section id="musica" class="section music-section">
 
-        <h2>Una historia de evolución</h2>
+        <div class="section-heading">
 
-        <p>
-Karol G, cuyo nombre es Carolina Giraldo Navarro, es una cantante y compositora colombiana reconocida como una de las figuras más importantes de la música latina actual. Nació en Medellín y, desde muy joven, mostró interés por la música y por construir una carrera artística con identidad propia.
-A lo largo de su trayectoria ha logrado conectar con millones de personas gracias a canciones que hablan de amor, desamor, confianza, superación y libertad. Su estilo mezcla reguetón, pop latino y sonidos urbanos, siempre acompañado de una estética colorida y una energía muy personal.
-Más que una artista de grandes éxitos, Karol G se ha convertido en un símbolo de perseverancia. Su historia demuestra que creer en los sueños, trabajar con constancia y mantenerse auténtica puede abrir caminos muy grandes. Con cada etapa de su carrera, sigue representando a Colombia y llevando su música a públicos de todo el mundo.
-        </p>
+            <div>
+
+                <p class="section-label">
+                    02 · MÚSICA
+                </p>
+
+                <h2>
+                    Sus canciones
+                </h2>
+
+            </div>
+
+            <p>
+                Algunos de los temas que forman parte
+                de su trayectoria musical.
+            </p>
+
+        </div>
+
+
+        <div class="music-grid">
+
+            <article class="music-card">
+
+                <div class="music-number">
+                    01
+                </div>
+
+                <div class="music-icon">
+                    ♫
+                </div>
+
+                <h3>
+                    Tusa
+                </h3>
+
+                <p>
+                    Uno de los grandes éxitos de su carrera.
+                </p>
+
+            </article>
+
+
+            <article class="music-card">
+
+                <div class="music-number">
+                    02
+                </div>
+
+                <div class="music-icon">
+                    ♫
+                </div>
+
+                <h3>
+                    Provenza
+                </h3>
+
+                <p>
+                    Una canción asociada a una etapa
+                    importante de su evolución artística.
+                </p>
+
+            </article>
+
+
+            <article class="music-card">
+
+                <div class="music-number">
+                    03
+                </div>
+
+                <div class="music-icon">
+                    ♫
+                </div>
+
+                <h3>
+                    Mientras Me Curo del Cora
+                </h3>
+
+                <p>
+                    Una propuesta con un tono más íntimo
+                    y reflexivo.
+                </p>
+
+            </article>
+
+
+            <article class="music-card">
+
+                <div class="music-number">
+                    04
+                </div>
+
+                <div class="music-icon">
+                    ♫
+                </div>
+
+                <h3>
+                    QLONA
+                </h3>
+
+                <p>
+                    Una colaboración destacada dentro
+                    de su repertorio.
+                </p>
+
+            </article>
+
+        </div>
 
     </section>
 
 
-    <!-- GALERÍA -->
-    <section id="galeria" class="section">
+    <!-- =========================
+         ÁLBUMES
+    ========================== -->
 
-        <p class="section-label">GALERÍA</p>
+    <section class="albums section">
 
-        <h2>Momentos</h2>
+        <div class="section-heading">
+
+            <div>
+
+                <p class="section-label">
+                    03 · DISCOGRAFÍA
+                </p>
+
+                <h2>
+                    Algunas eras
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="album-grid">
+
+            <article class="album-card">
+
+                <div class="album-cover cover-kg0516">
+                    <span>KG0516</span>
+                </div>
+
+                <div class="album-info">
+                    <h3>
+                        KG0516
+                    </h3>
+
+                    <p>
+                        Una etapa fundamental en su consolidación artística.
+                    </p>
+                </div>
+
+            </article>
+
+
+            <article class="album-card">
+
+                <div class="album-cover cover-manana">
+                    <span>
+                        MAÑANA<br>
+                        SERÁ<br>
+                        BONITO
+                    </span>
+                </div>
+
+                <div class="album-info">
+                    <h3>
+                        Mañana Será Bonito
+                    </h3>
+
+                    <p>
+                        Una de las etapas más reconocibles de su carrera.
+                    </p>
+                </div>
+
+            </article>
+
+
+            <article class="album-card">
+
+                <div class="album-cover cover-bichota">
+                    <span>
+                        ★<br>
+                        BICHOTA
+                    </span>
+                </div>
+
+                <div class="album-info">
+                    <h3>
+                        Evolución
+                    </h3>
+
+                    <p>
+                        Una carrera marcada por diferentes
+                        sonidos y transformaciones.
+                    </p>
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HISTORIA
+    ========================== -->
+
+    <section id="historia" class="history-section">
+
+        <div class="history-content">
+
+            <p class="section-label">
+                04 · TRAYECTORIA
+            </p>
+
+            <h2>
+                Una historia de
+                <span>evolución.</span>
+            </h2>
+
+            <p>
+                Carolina Giraldo Navarro, conocida mundialmente
+                como Karol G, desarrolló una carrera que la llevó
+                desde sus primeros pasos en la música hasta
+                convertirse en una de las artistas latinas
+                más reconocidas internacionalmente.
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <span>
+                    INICIOS
+                </span>
+
+                <h3>
+                    El comienzo
+                </h3>
+
+                <p>
+                    Sus primeros pasos estuvieron marcados
+                    por la búsqueda de una identidad propia.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <span>
+                    EVOLUCIÓN
+                </span>
+
+                <h3>
+                    La Bichota
+                </h3>
+
+                <p>
+                    Su imagen artística fue evolucionando
+                    junto con su sonido y su presencia internacional.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <span>
+                    ACTUALIDAD
+                </span>
+
+                <h3>
+                    Una artista global
+                </h3>
+
+                <p>
+                    Su carrera continúa expandiéndose
+                    a nuevos escenarios y proyectos.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALERÍA
+    ========================== -->
+
+    <section id="galeria" class="section gallery-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="section-label">
+                    05 · GALERÍA
+                </p>
+
+                <h2>
+                    Momentos
+                </h2>
+
+            </div>
+
+        </div>
+
 
         <div class="gallery">
-  <img src="karolg.jpg" alt="Karol G">
-  <div>💗</div>
-  <div>🎶</div>
-  <div>✨</div>
-</div>
+
+            <div class="gallery-item large">
+                <img src="karolg.jpg" alt="Karol G">
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    🎤
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    💗
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    🎶
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    ✨
+                </div>
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- PIE DE PÁGINA -->
-     <button id="volver-arriba">↑ Volver arriba</button>
-     <section class="mensaje-fan">
-  <h2>Deja tu mensaje</h2>
+    <!-- =========================
+         MENSAJE
+    ========================== -->
 
-  <form
-  id="formulario-fan"
-  action="https://formspree.io/f/xaewqvqj"
-  method="POST"
->
-    <input
-      id="nombre-fan"
-        name="nombre"
-      type="text"
-      placeholder="Escribe tu nombre"
-      required
-    ><textarea
-  name="mensaje"
-  placeholder="Escribe tu mensaje"
-  required
-></textarea>
+    <section id="contacto" class="message-section">
 
-    <button type="submit">Enviar mensaje</button>
-  </form>
+        <div class="message-box">
 
-  <p id="respuesta-fan"></p>
-</section>
+            <p class="section-label">
+                06 · FAN PAGE
+            </p>
+
+            <h2>
+                ¿Qué significa
+                <span>Karol G</span> para ti?
+            </h2>
+
+            <p>
+                Escribe un mensaje y déjalo aparecer
+                en nuestra página.
+            </p>
+
+
+            <form id="message-form">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Tu nombre"
+                    maxlength="30"
+                    required
+                >
+
+                <textarea
+                    id="message"
+                    placeholder="Escribe tu mensaje..."
+                    maxlength="150"
+                    required
+                ></textarea>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Publicar mensaje
+                </button>
+
+            </form>
+
+
+            <div
+                id="message-result"
+                class="message-result"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer>
 
-        <p>
-            Cristian Hoyos
-        </p>
+        <div class="footer-logo">
+            KAROL <span>G</span>
+        </div>
 
         <p>
-             © <span id="anio"></span>
+            Fan page creada por
+            <strong>Cristian Hoyos</strong>.
+        </p>
+
+        <p class="copyright">
+            © 2026 · Sitio creado con HTML, CSS y JavaScript.
         </p>
 
     </footer>
 
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
