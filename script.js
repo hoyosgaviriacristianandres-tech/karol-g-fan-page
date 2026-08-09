@@ -1,26 +1,28 @@
 // =========================
-// MENÚ PARA CELULAR
+// MENÚ MÓVIL
 // =========================
 
 const menuToggle = document.getElementById("menu-toggle");
 const navMenu = document.getElementById("nav-menu");
 
-menuToggle.addEventListener("click", () => {
+if (menuToggle && navMenu) {
 
-    navMenu.classList.toggle("active");
+    menuToggle.addEventListener("click", function () {
+        navMenu.classList.toggle("active");
+    });
 
-});
+}
 
-
-// Cerrar el menú al seleccionar una opción
 
 const navLinks = document.querySelectorAll("#nav-menu a");
 
-navLinks.forEach(link => {
+navLinks.forEach(function (link) {
 
-    link.addEventListener("click", () => {
+    link.addEventListener("click", function () {
 
-        navMenu.classList.remove("active");
+        if (navMenu) {
+            navMenu.classList.remove("active");
+        }
 
     });
 
@@ -32,93 +34,40 @@ navLinks.forEach(link => {
 // =========================
 
 const form = document.getElementById("message-form");
-
 const result = document.getElementById("message-result");
 
+if (form && result) {
 
-form.addEventListener("submit", function(event) {
+    form.addEventListener("submit", function (event) {
 
-    event.preventDefault();
+        event.preventDefault();
 
+        const name =
+            document.getElementById("name").value.trim();
 
-    const name =
-        document.getElementById("name").value.trim();
+        const message =
+            document.getElementById("message").value.trim();
 
-    const message =
-        document.getElementById("message").value.trim();
+        if (name === "" || message === "") {
 
+            result.textContent =
+                "Por favor completa todos los campos.";
 
-    if (name === "" || message === "") {
-
-        result.textContent =
-            "Por favor completa todos los campos.";
-
-        return;
-
-    }
-
-
-    result.textContent =
-        `💗 Gracias, ${name}. Tu mensaje quedó registrado: "${message}"`;
-
-
-    form.reset();
-
-});
-
-
-// =========================
-// ANIMACIÓN AL APARECER
-// =========================
-
-const elements =
-    document.querySelectorAll(
-        ".music-card, .album-card, .timeline-item, .gallery-item"
-    );
-
-
-const observer =
-    new IntersectionObserver(
-
-        (entries) => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.style.opacity = "1";
-
-                    entry.target.style.transform =
-                        "translateY(0)";
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.15
+            return;
         }
 
-    );
+        result.textContent =
+            `💗 Gracias, ${name}. Tu mensaje quedó registrado.`;
+
+        form.reset();
+
+    });
+
+}
 
 
-elements.forEach(element => {
-
-    element.style.opacity = "0";
-
-    element.style.transform =
-        "translateY(25px)";
-
-    element.style.transition =
-        "opacity 0.7s ease, transform 0.7s ease";
-
-    observer.observe(element);
-
-});
 // =========================
-// REPRODUCTOR MUSICAL
+// REPRODUCTOR
 // =========================
 
 const songs = [
@@ -130,113 +79,162 @@ const songs = [
 
 let currentSong = 0;
 let isPlaying = false;
-
-const songTitle = document.getElementById("song-title");
-const playButton = document.getElementById("play-song");
-const prevButton = document.getElementById("prev-song");
-const nextButton = document.getElementById("next-song");
-const progress = document.getElementById("progress");
+let progressTimer = null;
+let progressValue = 0;
 
 
-// Cambiar canción
+const songTitle =
+    document.getElementById("song-title");
 
-function updateSong() {
+const playButton =
+    document.getElementById("play-song");
 
-    songTitle.textContent = songs[currentSong];
+const prevButton =
+    document.getElementById("prev-song");
 
-    progress.style.width = "0%";
+const nextButton =
+    document.getElementById("next-song");
 
-}
+const progress =
+    document.getElementById("progress");
 
 
-// Reproducir / pausar
+// Comprobar que existen los elementos
 
-playButton.addEventListener("click", () => {
+if (
+    songTitle &&
+    playButton &&
+    prevButton &&
+    nextButton &&
+    progress
+) {
 
-    isPlaying = !isPlaying;
 
-    if (isPlaying) {
+    // =========================
+    // ACTUALIZAR CANCIÓN
+    // =========================
 
-        playButton.textContent = "❚❚";
+    function updateSong() {
 
-        startProgress();
+        songTitle.textContent =
+            songs[currentSong];
 
-    } else {
+        progressValue = 0;
 
-        playButton.textContent = "▶";
+        progress.style.width = "0%";
 
     }
 
-});
 
+    // =========================
+    // PLAY / PAUSE
+    // =========================
 
-// Canción anterior
+    playButton.addEventListener("click", function () {
 
-prevButton.addEventListener("click", () => {
+        isPlaying = !isPlaying;
 
-    currentSong--;
+        if (isPlaying) {
 
-    if (currentSong < 0) {
-        currentSong = songs.length - 1;
-    }
-
-    updateSong();
-
-});
-
-
-// Canción siguiente
-
-nextButton.addEventListener("click", () => {
-
-    currentSong++;
-
-    if (currentSong >= songs.length) {
-        currentSong = 0;
-    }
-
-    updateSong();
-
-});
-
-
-// Barra de progreso visual
-
-function startProgress() {
-
-    let width = 0;
-
-    const timer = setInterval(() => {
-
-        if (!isPlaying) {
-
-            clearInterval(timer);
-
-            return;
-
-        }
-
-        width += 0.5;
-
-        progress.style.width = width + "%";
-
-
-        if (width >= 100) {
-
-            clearInterval(timer);
-
-            currentSong++;
-
-            if (currentSong >= songs.length) {
-                currentSong = 0;
-            }
-
-            updateSong();
+            playButton.textContent = "❚❚";
 
             startProgress();
 
+        } else {
+
+            playButton.textContent = "▶";
+
+            stopProgress();
+
         }
 
-    }, 100);
+    });
+
+
+    // =========================
+    // ANTERIOR
+    // =========================
+
+    prevButton.addEventListener("click", function () {
+
+        currentSong--;
+
+        if (currentSong < 0) {
+
+            currentSong =
+                songs.length - 1;
+
+        }
+
+        updateSong();
+
+    });
+
+
+    // =========================
+    // SIGUIENTE
+    // =========================
+
+    nextButton.addEventListener("click", function () {
+
+        currentSong++;
+
+        if (currentSong >= songs.length) {
+
+            currentSong = 0;
+
+        }
+
+        updateSong();
+
+    });
+
+
+    // =========================
+    // PROGRESO
+    // =========================
+
+    function startProgress() {
+
+        stopProgress();
+
+        progressTimer = setInterval(function () {
+
+            progressValue += 1;
+
+            progress.style.width =
+                progressValue + "%";
+
+
+            if (progressValue >= 100) {
+
+                currentSong++;
+
+                if (currentSong >= songs.length) {
+
+                    currentSong = 0;
+
+                }
+
+                updateSong();
+
+            }
+
+        }, 100);
+
+    }
+
+
+    function stopProgress() {
+
+        if (progressTimer) {
+
+            clearInterval(progressTimer);
+
+            progressTimer = null;
+
+        }
+
+    }
 
 }
