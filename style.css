@@ -1,7 +1,3 @@
-/* =========================
-   GENERAL
-========================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +10,7 @@ html {
 
 body {
     background: #08070a;
-    color: white;
+    color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
 }
@@ -31,9 +27,7 @@ textarea {
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header {
     position: sticky;
@@ -48,17 +42,16 @@ textarea {
 
     padding: 0 7%;
 
-    background: rgba(5, 4, 6, 0.92);
+    background: rgba(5, 4, 6, 0.94);
 
     backdrop-filter: blur(15px);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .logo {
     font-size: 22px;
     font-weight: 900;
-    letter-spacing: -1px;
 }
 
 .logo span,
@@ -86,33 +79,34 @@ footer span {
 
     border: none;
     background: transparent;
+
     color: white;
 
     font-size: 25px;
+
     cursor: pointer;
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero {
     min-height: 650px;
 
     display: grid;
+
     grid-template-columns: 1fr 0.75fr;
 
     align-items: center;
 
-    gap: 40px;
+    gap: 50px;
 
     padding: 80px 8%;
 
     background:
         radial-gradient(
             circle at 75% 45%,
-            rgba(255, 63, 164, 0.18),
+            rgba(255,63,164,0.18),
             transparent 35%
         ),
         linear-gradient(
@@ -194,11 +188,13 @@ footer span {
 
 .button.primary {
     background: #ff3fa4;
+
     color: white;
 }
 
 .button.primary:hover {
     background: #ff65b7;
+
     transform: translateY(-3px);
 }
 
@@ -208,11 +204,13 @@ footer span {
 
 .button.secondary:hover {
     border-color: #ff3fa4;
+
     color: #ff3fa4;
 }
 
 .hero-image {
     display: flex;
+
     justify-content: center;
 }
 
@@ -226,15 +224,11 @@ footer span {
     border-radius: 40px;
 
     box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.5);
-
-    filter: saturate(1.1);
+        0 30px 80px rgba(0,0,0,0.5);
 }
 
 
-/* =========================
-   SECCIONES
-========================= */
+/* SECCIONES */
 
 .section {
     padding: 100px 8%;
@@ -251,7 +245,7 @@ footer span {
 }
 
 .section-heading h2 {
-    font-size: clamp(35px, 5vw, 65px);
+    font-size: clamp(35px,5vw,65px);
 
     line-height: 1;
 }
@@ -263,9 +257,7 @@ footer span {
 }
 
 
-/* =========================
-   CANCIONES
-========================= */
+/* CANCIONES */
 
 .music-section {
     background: #0d0a0e;
@@ -274,7 +266,7 @@ footer span {
 .song-grid {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
 
     gap: 15px;
 }
@@ -288,17 +280,17 @@ footer span {
 
     padding: 22px;
 
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255,255,255,0.08);
 
     border-radius: 18px;
 
-    background: rgba(255, 255, 255, 0.025);
+    background: rgba(255,255,255,0.025);
 
     transition: 0.3s;
 }
 
 .song-card:hover {
-    border-color: rgba(255, 63, 164, 0.5);
+    border-color: rgba(255,63,164,0.5);
 
     transform: translateY(-3px);
 }
@@ -339,9 +331,7 @@ footer span {
 }
 
 
-/* =========================
-   REPRODUCTOR
-========================= */
+/* REPRODUCTOR */
 
 .player {
     margin-top: 45px;
@@ -356,19 +346,16 @@ footer span {
 
     align-items: center;
 
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255,255,255,0.12);
 
     border-radius: 22px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255, 63, 164, 0.13),
-            rgba(255, 255, 255, 0.03)
+            rgba(255,63,164,0.13),
+            rgba(255,255,255,0.03)
         );
-
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.3);
 }
 
 .player-info {
@@ -438,7 +425,7 @@ footer span {
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255,255,255,0.08);
 
     color: white;
 
@@ -473,7 +460,7 @@ footer span {
 
     border-radius: 10px;
 
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.1);
 }
 
 .progress {
@@ -485,9 +472,7 @@ footer span {
 }
 
 
-/* =========================
-   ÁLBUMES
-========================= */
+/* ÁLBUMES */
 
 .albums {
     background: #09070a;
@@ -496,7 +481,7 @@ footer span {
 .album-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
     gap: 22px;
 }
@@ -508,7 +493,7 @@ footer span {
 
     background: #120d13;
 
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255,255,255,0.1);
 
     transition: 0.4s;
 }
@@ -516,10 +501,10 @@ footer span {
 .album-card:hover {
     transform: translateY(-10px);
 
-    border-color: rgba(255, 63, 164, 0.6);
+    border-color: rgba(255,63,164,0.6);
 
     box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.4);
+        0 25px 70px rgba(0,0,0,0.4);
 }
 
 .album-cover {
@@ -545,7 +530,7 @@ footer span {
     background:
         linear-gradient(
             transparent 40%,
-            rgba(0, 0, 0, 0.7)
+            rgba(0,0,0,0.7)
         );
 }
 
@@ -690,9 +675,7 @@ footer span {
 }
 
 
-/* =========================
-   ESTADÍSTICAS
-========================= */
+/* ESTADÍSTICAS */
 
 .stats-section {
     background:
@@ -706,7 +689,7 @@ footer span {
 .stats-grid {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
 
     gap: 15px;
 }
@@ -716,9 +699,9 @@ footer span {
 
     border-radius: 20px;
 
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255,255,255,0.08);
 
-    background: rgba(255, 255, 255, 0.025);
+    background: rgba(255,255,255,0.025);
 
     text-align: center;
 }
@@ -740,9 +723,7 @@ footer span {
 }
 
 
-/* =========================
-   HISTORIA
-========================= */
+/* HISTORIA */
 
 .history {
     background: #0d0a0e;
@@ -763,7 +744,7 @@ footer span {
 
     padding: 30px 0;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .timeline-item > span {
@@ -787,9 +768,7 @@ footer span {
 }
 
 
-/* =========================
-   GALERÍA
-========================= */
+/* GALERÍA */
 
 .gallery {
     background: #09070a;
@@ -829,15 +808,13 @@ footer span {
 }
 
 
-/* =========================
-   MENSAJE
-========================= */
+/* MENSAJE */
 
 .message-section {
     background:
         radial-gradient(
             circle at center,
-            rgba(255, 63, 164, 0.15),
+            rgba(255,63,164,0.15),
             transparent 45%
         );
 }
@@ -870,11 +847,11 @@ footer span {
 
     padding: 16px;
 
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255,255,255,0.1);
 
     border-radius: 12px;
 
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255,255,255,0.04);
 
     color: white;
 
@@ -893,9 +870,7 @@ footer span {
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
     padding: 45px 8%;
@@ -908,7 +883,7 @@ footer {
 
     color: #777;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-top: 1px solid rgba(255,255,255,0.07);
 
     font-size: 13px;
 }
@@ -924,9 +899,7 @@ footer strong {
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE */
 
 @media (max-width: 1000px) {
 
@@ -939,11 +912,11 @@ footer strong {
     }
 
     .album-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
     .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
 }
@@ -965,6 +938,7 @@ footer strong {
         position: absolute;
 
         top: 70px;
+
         left: 0;
         right: 0;
 
