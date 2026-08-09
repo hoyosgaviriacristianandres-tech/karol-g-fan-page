@@ -1,69 +1,37 @@
 // =========================
-// MENÚ MÓVIL
+// MENÚ
 // =========================
 
-const menuToggle = document.getElementById("menu-toggle");
-const navMenu = document.getElementById("nav-menu");
+const menuToggle =
+    document.getElementById("menu-toggle");
+
+const navMenu =
+    document.getElementById("nav-menu");
+
 
 if (menuToggle && navMenu) {
 
-    menuToggle.addEventListener("click", function () {
+    menuToggle.addEventListener("click", () => {
+
         navMenu.classList.toggle("active");
+
     });
 
 }
 
 
-const navLinks = document.querySelectorAll("#nav-menu a");
+document
+    .querySelectorAll("#nav-menu a")
+    .forEach(link => {
 
-navLinks.forEach(function (link) {
+        link.addEventListener("click", () => {
 
-    link.addEventListener("click", function () {
-
-        if (navMenu) {
             navMenu.classList.remove("active");
-        }
+
+        });
 
     });
 
-});
-
-
-// =========================
-// FORMULARIO
-// =========================
-
-const form = document.getElementById("message-form");
-const result = document.getElementById("message-result");
-
-if (form && result) {
-
-    form.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-        const name =
-            document.getElementById("name").value.trim();
-
-        const message =
-            document.getElementById("message").value.trim();
-
-        if (name === "" || message === "") {
-
-            result.textContent =
-                "Por favor completa todos los campos.";
-
-            return;
-        }
-
-        result.textContent =
-            `💗 Gracias, ${name}. Tu mensaje quedó registrado.`;
-
-        form.reset();
-
-    });
-
-}
 
 
 // =========================
@@ -78,8 +46,11 @@ const songs = [
 ];
 
 let currentSong = 0;
+
 let isPlaying = false;
+
 let progressTimer = null;
+
 let progressValue = 0;
 
 
@@ -99,40 +70,80 @@ const progress =
     document.getElementById("progress");
 
 
-// Comprobar que existen los elementos
 
-if (
-    songTitle &&
-    playButton &&
-    prevButton &&
-    nextButton &&
-    progress
-) {
+function updateSong() {
+
+    songTitle.textContent =
+        songs[currentSong];
+
+    progressValue = 0;
+
+    progress.style.width = "0%";
+
+}
 
 
-    // =========================
-    // ACTUALIZAR CANCIÓN
-    // =========================
 
-    function updateSong() {
+function stopProgress() {
 
-        songTitle.textContent =
-            songs[currentSong];
+    if (progressTimer) {
 
-        progressValue = 0;
+        clearInterval(progressTimer);
 
-        progress.style.width = "0%";
+        progressTimer = null;
 
     }
 
+}
 
-    // =========================
-    // PLAY / PAUSE
-    // =========================
 
-    playButton.addEventListener("click", function () {
+
+function startProgress() {
+
+    stopProgress();
+
+    progressTimer = setInterval(() => {
+
+        if (!isPlaying) {
+
+            stopProgress();
+
+            return;
+
+        }
+
+        progressValue += 1;
+
+        progress.style.width =
+            progressValue + "%";
+
+
+        if (progressValue >= 100) {
+
+            currentSong++;
+
+            if (currentSong >= songs.length) {
+
+                currentSong = 0;
+
+            }
+
+            updateSong();
+
+        }
+
+    }, 100);
+
+}
+
+
+
+playButton.addEventListener(
+    "click",
+    () => {
 
         isPlaying = !isPlaying;
+
 
         if (isPlaying) {
 
@@ -148,14 +159,14 @@ if (
 
         }
 
-    });
+    }
+);
 
 
-    // =========================
-    // ANTERIOR
-    // =========================
 
-    prevButton.addEventListener("click", function () {
+prevButton.addEventListener(
+    "click",
+    () => {
 
         currentSong--;
 
@@ -168,14 +179,14 @@ if (
 
         updateSong();
 
-    });
+    }
+);
 
 
-    // =========================
-    // SIGUIENTE
-    // =========================
 
-    nextButton.addEventListener("click", function () {
+nextButton.addEventListener(
+    "click",
+    () => {
 
         currentSong++;
 
@@ -187,54 +198,137 @@ if (
 
         updateSong();
 
-    });
-
-
-    // =========================
-    // PROGRESO
-    // =========================
-
-    function startProgress() {
-
-        stopProgress();
-
-        progressTimer = setInterval(function () {
-
-            progressValue += 1;
-
-            progress.style.width =
-                progressValue + "%";
-
-
-            if (progressValue >= 100) {
-
-                currentSong++;
-
-                if (currentSong >= songs.length) {
-
-                    currentSong = 0;
-
-                }
-
-                updateSong();
-
-            }
-
-        }, 100);
-
     }
+);
 
 
-    function stopProgress() {
 
-        if (progressTimer) {
+// =========================
+// TARJETAS DE CANCIONES
+// =========================
 
-            clearInterval(progressTimer);
+const songButtons =
+    document.querySelectorAll(".song-select");
 
-            progressTimer = null;
+
+songButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const selectedSong =
+            button.dataset.song;
+
+        const index =
+            songs.indexOf(selectedSong);
+
+
+        if (index !== -1) {
+
+            currentSong = index;
+
+            updateSong();
+
+            isPlaying = true;
+
+            playButton.textContent = "❚❚";
+
+            startProgress();
 
         }
 
-    }
+    });
+
+});
+
+
+
+// =========================
+// FORMULARIO
+// =========================
+
+const form =
+    document.getElementById("message-form");
+
+const result =
+    document.getElementById("message-result");
+
+
+if (form) {
+
+    form.addEventListener("submit", event => {
+
+        event.preventDefault();
+
+
+        const name =
+            document
+                .getElementById("name")
+                .value
+                .trim();
+
+
+        const message =
+            document
+                .getElementById("message")
+                .value
+                .trim();
+
+
+        if (!name || !message) {
+
+            result.textContent =
+                "Por favor completa todos los campos.";
+
+            return;
+
+        }
+
+
+        result.textContent =
+            `💗 Gracias, ${name}. Tu mensaje fue registrado.`;
+
+
+        form.reset();
+
+    });
 
 }
+
+
+
+// =========================
+// ANIMACIÓN AL APARECER
+// =========================
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+document
+    .querySelectorAll(
+        ".song-card, .album-card, .stat-card, .timeline-item, .gallery-item"
+    )
+    .forEach(element => {
+
+        observer.observe(element);
+
+    });
