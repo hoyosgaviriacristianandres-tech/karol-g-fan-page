@@ -652,53 +652,123 @@ img {
 
     grid-template-columns: repeat(3, 1fr);
 
-    gap: 20px;
+    gap: 22px;
 }
 
 .album-card {
-    border-radius: 20px;
-
     overflow: hidden;
+
+    border-radius: 22px;
 
     background: #120d13;
 
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255, 255, 255, 0.10);
 
     transition:
-        transform 0.4s,
-        border-color 0.4s;
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
 }
 
 .album-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
 
-    border-color: rgba(255, 63, 164, 0.4);
+    border-color: rgba(255, 63, 164, 0.55);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35);
 }
 
+
+/* PORTADAS */
+
 .album-cover {
-    height: 360px;
+    position: relative;
+
+    height: 380px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
+    overflow: hidden;
+}
+
+.album-cover::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(0, 0, 0, 0.7)
+        );
+}
+
+.album-cover-content {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
     text-align: center;
+}
 
-    font-size: 40px;
+.album-cover-content small {
+    margin-bottom: 20px;
 
-    font-weight: 900;
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+}
+
+.album-cover-content strong {
+    font-size: 45px;
+
+    line-height: 0.95;
 
     letter-spacing: -2px;
 
-    padding: 30px;
+    text-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.5);
 }
+
+.album-cover-content span {
+    margin-top: 25px;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* COLORES */
 
 .cover-kg0516 {
     background:
+        radial-gradient(
+            circle at 50% 30%,
+            #a45d9d,
+            transparent 35%
+        ),
         linear-gradient(
             145deg,
-            #332034,
+            #362036,
             #0b080b
         );
 }
@@ -706,44 +776,118 @@ img {
 .cover-manana {
     background:
         radial-gradient(
-            circle at 50% 20%,
-            #ff8cc9,
-            transparent 35%
+            circle at 50% 25%,
+            #ff91c9,
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            #9b5cff,
+            transparent 30%
         ),
         linear-gradient(
             145deg,
-            #30202e,
+            #3a2336,
             #100911
         );
 }
 
 .cover-bichota {
     background:
+        radial-gradient(
+            circle at 70% 30%,
+            #ff3fa4,
+            transparent 30%
+        ),
         linear-gradient(
             145deg,
-            #5c1d4c,
+            #681f52,
             #170813
         );
 }
+
+
+/* INFORMACIÓN */
 
 .album-info {
     padding: 25px;
 }
 
-.album-info h3 {
-    font-size: 23px;
+.album-title {
+    display: flex;
 
-    margin-bottom: 10px;
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+}
+
+.album-title h3 {
+    font-size: 22px;
+}
+
+.album-title span {
+    color: #ff3fa4;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
 }
 
 .album-info p {
-    color: var(--gray);
-
-    line-height: 1.6;
+    color: #999;
 
     font-size: 14px;
+
+    line-height: 1.7;
+
+    margin-bottom: 20px;
 }
 
+.album-button {
+    display: inline-block;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    transition: 0.3s;
+}
+
+.album-button:hover {
+    color: #ff3fa4;
+
+    transform: translateX(5px);
+}
+
+
+@media (max-width: 1000px) {
+
+    .album-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .album-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .album-cover {
+        height: 340px;
+    }
+
+}
 
 /* =========================
    HISTORIA
