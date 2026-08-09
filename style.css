@@ -1446,3 +1446,174 @@ footer strong {
     }
 
 }
+/* =========================
+   REPRODUCTOR MUSICAL
+========================= */
+
+.player {
+    margin-top: 50px;
+
+    padding: 25px;
+
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    gap: 25px;
+
+    align-items: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 63, 164, 0.12),
+            rgba(255, 255, 255, 0.03)
+        );
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.player-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+.player-cover {
+    width: 70px;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff3fa4,
+            #9b5cff
+        );
+
+    font-size: 30px;
+}
+
+.player-info span {
+    color: #ff3fa4;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.player-info h3 {
+    margin-top: 5px;
+
+    font-size: 22px;
+}
+
+.player-info p {
+    margin-top: 4px;
+
+    color: #999;
+
+    font-size: 13px;
+}
+
+.player-controls {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.player-controls button {
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.player-controls button:hover {
+    background: #ff3fa4;
+
+    transform: scale(1.08);
+}
+
+.player-controls .play-button {
+    width: 55px;
+
+    height: 55px;
+
+    background: #ff3fa4;
+
+    font-size: 18px;
+}
+
+.progress-container {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    height: 4px;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+
+    height: 100%;
+
+    background: #ff3fa4;
+
+    transition: width 0.2s linear;
+}
+
+
+@media (max-width: 700px) {
+
+    .player {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .player-info {
+        justify-content: center;
+    }
+
+    .player-controls {
+        justify-content: center;
+    }
+
+}
