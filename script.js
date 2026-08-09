@@ -1,334 +1,290 @@
-// =========================
-// MENÚ
-// =========================
+document.addEventListener("DOMContentLoaded", () => {
 
-const menuToggle =
-    document.getElementById("menu-toggle");
+    /* =========================
+       MENÚ MÓVIL
+    ========================== */
 
-const navMenu =
-    document.getElementById("nav-menu");
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
+    if (menuToggle && navMenu) {
+
+        menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+
+        navMenu.querySelectorAll("a").forEach(link => {
+
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+            });
+
+        });
+
+    }
 
 
-if (menuToggle && navMenu) {
+    /* =========================
+       REPRODUCTOR
+    ========================== */
 
-    menuToggle.addEventListener("click", () => {
+    const songs = [
+        "Tusa",
+        "Provenza",
+        "Mientras Me Curo del Cora",
+        "QLONA"
+    ];
 
-        navMenu.classList.toggle("active");
+    let currentSong = 0;
+    let playing = false;
+    let progressValue = 0;
 
-    });
+    const songTitle = document.getElementById("song-title");
+    const playButton = document.getElementById("play-song");
+    const prevButton = document.getElementById("prev-song");
+    const nextButton = document.getElementById("next-song");
+    const progress = document.getElementById("progress");
 
-}
+
+    function updateSong() {
+
+        if (!songTitle) return;
+
+        songTitle.textContent = songs[currentSong];
+
+        progressValue = 0;
+
+        if (progress) {
+            progress.style.width = "0%";
+        }
+
+    }
 
 
-document
-    .querySelectorAll("#nav-menu a")
-    .forEach(link => {
+    function togglePlay() {
 
-        link.addEventListener("click", () => {
+        playing = !playing;
 
-            navMenu.classList.remove("active");
+        if (!playButton) return;
+
+        playButton.textContent = playing ? "❚❚" : "▶";
+
+    }
+
+
+    function nextSong() {
+
+        currentSong++;
+
+        if (currentSong >= songs.length) {
+            currentSong = 0;
+        }
+
+        updateSong();
+
+    }
+
+
+    function previousSong() {
+
+        currentSong--;
+
+        if (currentSong < 0) {
+            currentSong = songs.length - 1;
+        }
+
+        updateSong();
+
+    }
+
+
+    if (playButton) {
+        playButton.addEventListener("click", togglePlay);
+    }
+
+    if (nextButton) {
+        nextButton.addEventListener("click", nextSong);
+    }
+
+    if (prevButton) {
+        prevButton.addEventListener("click", previousSong);
+    }
+
+
+    /* =========================
+       BOTONES DE CANCIONES
+    ========================== */
+
+    const songButtons =
+        document.querySelectorAll(".song-select");
+
+    songButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const selectedSong =
+                button.dataset.song;
+
+            const index =
+                songs.indexOf(selectedSong);
+
+            if (index !== -1) {
+                currentSong = index;
+            }
+
+            updateSong();
+
+            playing = true;
+
+            if (playButton) {
+                playButton.textContent = "❚❚";
+            }
 
         });
 
     });
 
 
+    /* =========================
+       BARRA DE PROGRESO
+    ========================== */
 
-// =========================
-// REPRODUCTOR
-// =========================
+    setInterval(() => {
 
-const songs = [
-    "Tusa",
-    "Provenza",
-    "Mientras Me Curo del Cora",
-    "QLONA"
-];
+        if (!playing) return;
 
-let currentSong = 0;
-
-let isPlaying = false;
-
-let progressTimer = null;
-
-let progressValue = 0;
-
-
-const songTitle =
-    document.getElementById("song-title");
-
-const playButton =
-    document.getElementById("play-song");
-
-const prevButton =
-    document.getElementById("prev-song");
-
-const nextButton =
-    document.getElementById("next-song");
-
-const progress =
-    document.getElementById("progress");
-
-
-
-function updateSong() {
-
-    songTitle.textContent =
-        songs[currentSong];
-
-    progressValue = 0;
-
-    progress.style.width = "0%";
-
-}
-
-
-
-function stopProgress() {
-
-    if (progressTimer) {
-
-        clearInterval(progressTimer);
-
-        progressTimer = null;
-
-    }
-
-}
-
-
-
-function startProgress() {
-
-    stopProgress();
-
-    progressTimer = setInterval(() => {
-
-        if (!isPlaying) {
-
-            stopProgress();
-
-            return;
-
-        }
-
-        progressValue += 1;
-
-        progress.style.width =
-            progressValue + "%";
-
+        progressValue += 0.5;
 
         if (progressValue >= 100) {
 
-            currentSong++;
+            progressValue = 0;
 
-            if (currentSong >= songs.length) {
+            nextSong();
 
-                currentSong = 0;
+        }
 
-            }
-
-            updateSong();
-
+        if (progress) {
+            progress.style.width =
+                `${progressValue}%`;
         }
 
     }, 100);
 
-}
+
+    /* =========================
+       FORMULARIO
+    ========================== */
+
+    const messageForm =
+        document.getElementById("message-form");
+
+    const messageResult =
+        document.getElementById("message-result");
 
 
+    if (messageForm) {
 
-playButton.addEventListener(
-    "click",
-    () => {
+        messageForm.addEventListener("submit", event => {
 
-        isPlaying = !isPlaying;
+            event.preventDefault();
 
+            const name =
+                document.getElementById("name").value.trim();
 
-        if (isPlaying) {
-
-            playButton.textContent = "❚❚";
-
-            startProgress();
-
-        } else {
-
-            playButton.textContent = "▶";
-
-            stopProgress();
-
-        }
-
-    }
-);
+            const message =
+                document.getElementById("message").value.trim();
 
 
+            if (!name || !message) {
 
-prevButton.addEventListener(
-    "click",
-    () => {
+                messageResult.textContent =
+                    "Completa tu nombre y tu mensaje.";
 
-        currentSong--;
+                return;
 
-        if (currentSong < 0) {
+            }
 
-            currentSong =
-                songs.length - 1;
 
-        }
+            messageResult.textContent =
+                `Gracias, ${name}. Tu mensaje fue recibido 💗`;
 
-        updateSong();
+            messageForm.reset();
+
+        });
 
     }
-);
 
 
+    /* =========================
+       ANIMACIÓN AL HACER SCROLL
+    ========================== */
 
-nextButton.addEventListener(
-    "click",
-    () => {
+    const elements =
+        document.querySelectorAll(
+            ".song-card, .album-card, .stat-card, .timeline-item, .gallery-item"
+        );
 
-        currentSong++;
 
-        if (currentSong >= songs.length) {
+    const observer =
+        new IntersectionObserver(
+            entries => {
 
-            currentSong = 0;
+                entries.forEach(entry => {
 
-        }
+                    if (entry.isIntersecting) {
 
-        updateSong();
+                        entry.target.classList.add("visible");
 
-    }
-);
+                        observer.unobserve(entry.target);
 
+                    }
 
+                });
 
-// =========================
-// TARJETAS DE CANCIONES
-// =========================
+            },
+            {
+                threshold: 0.12
+            }
+        );
 
-const songButtons =
-    document.querySelectorAll(".song-select");
 
+    elements.forEach(element => {
 
-songButtons.forEach(button => {
+        element.style.opacity = "0";
 
-    button.addEventListener("click", () => {
+        element.style.transform = "translateY(25px)";
 
-        const selectedSong =
-            button.dataset.song;
-
-        const index =
-            songs.indexOf(selectedSong);
-
-
-        if (index !== -1) {
-
-            currentSong = index;
-
-            updateSong();
-
-            isPlaying = true;
-
-            playButton.textContent = "❚❚";
-
-            startProgress();
-
-        }
-
-    });
-
-});
-
-
-
-// =========================
-// FORMULARIO
-// =========================
-
-const form =
-    document.getElementById("message-form");
-
-const result =
-    document.getElementById("message-result");
-
-
-if (form) {
-
-    form.addEventListener("submit", event => {
-
-        event.preventDefault();
-
-
-        const name =
-            document
-                .getElementById("name")
-                .value
-                .trim();
-
-
-        const message =
-            document
-                .getElementById("message")
-                .value
-                .trim();
-
-
-        if (!name || !message) {
-
-            result.textContent =
-                "Por favor completa todos los campos.";
-
-            return;
-
-        }
-
-
-        result.textContent =
-            `💗 Gracias, ${name}. Tu mensaje fue registrado.`;
-
-
-        form.reset();
-
-    });
-
-}
-
-
-
-// =========================
-// ANIMACIÓN AL APARECER
-// =========================
-
-const observer =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.12
-        }
-    );
-
-
-document
-    .querySelectorAll(
-        ".song-card, .album-card, .stat-card, .timeline-item, .gallery-item"
-    )
-    .forEach(element => {
+        element.style.transition =
+            "opacity 0.7s ease, transform 0.7s ease";
 
         observer.observe(element);
 
     });
+
+
+    /* =========================
+       ESTILO PARA ELEMENTOS VISIBLES
+    ========================== */
+
+    const style =
+        document.createElement("style");
+
+    style.textContent = `
+
+        .visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+    `;
+
+    document.head.appendChild(style);
+
+
+    /* =========================
+       INICIALIZACIÓN
+    ========================== */
+
+    updateSong();
+
+});
